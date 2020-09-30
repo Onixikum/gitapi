@@ -1,0 +1,5 @@
+<%= form_with url: search_users_path, model: @user, class: "nifty_form" do |f| %>
+  <%= f.label(:login, "Enter GitHub login:") %>
+  <%= f.text_field :login %>
+  <%= f.submit "Search" %>
+<% end %>
