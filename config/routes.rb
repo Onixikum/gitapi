@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, only: :search do
     post 'search', on: :collection
+    get 'search', on: :collection
   end
 end
