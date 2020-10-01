@@ -1,0 +1,42 @@
+<input id="inptest">GitHub_login</input>
+<button type="button" onclick='getData()'>+</button>
+
+<p id="username">
+</p>
+
+<p id="repos">
+</p>
+
+<script>
+
+function getData(name = "login") {
+var data = document.getElementById("inptest").value;
+fetch('http://localhost:3000/graphql', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+  },
+  body: JSON.stringify({query: `{
+    user(login: "${data}") {
+    login
+    name
+    repos { name }
+  }
+   }`})
+})
+  .then(r => r.json())
+  .then(data => {
+    var targetUsername = document.querySelector('#username');
+    console.log({data});
+    targetUsername.innerHTML = data.data.user.name;
+
+    var targetRepos = document.querySelector('#repos');
+    var repoNames = data.data.user.repos.map((repo) => repo.name)
+    var reposString = repoNames.join(", ");
+    targetRepos.innerHTML = reposString;
+
+    return data;
+  });
+}
+</script>
