@@ -4,7 +4,7 @@ module Types
     field :repo, [RepoType], null: false
 
     def user
-      User.find_by(login: 'GIT_login_2')
+      User.find_by(login: 'Onixikum')
     end
 
     def repo

@@ -1,5 +1,7 @@
 <%= link_to "Return to search", root_path %> <br><br>
-<h3><%= "Name: #{@user.name}" %></h3>
-<% @repos.each do |repo| %>
-  <p><%= "-- #{repo.name}" %></p>
-<% end %>
+
+  <h3><%= "Name: #{@user.name}" %></h3>
+
+  <% @repos.each do |repo| %>
+    <p><%= "- #{repo.name}" %></p>
+  <% end %>
